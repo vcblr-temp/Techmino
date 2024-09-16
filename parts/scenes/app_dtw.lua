@@ -29,6 +29,7 @@ local modeSelector=WIDGET.newSelector{name='mode',x=150,y=220,w=290,
     list={
         "Normal",
         "Split",
+        "Split_harm",
         "Short",
         "Stairs",
         "Double",
@@ -97,6 +98,17 @@ local generator={
     Split=function()
         if #pos==0 then ins(pos,rnd(4)) end
         ins(pos,pos[#pos]<=2 and rnd(3,4) or rnd(2))
+    end,
+    Split_harm=function()
+        if #pos==0 then ins(pos,rnd(4))
+        elseif #pos==1 then 
+            local r
+            r=rnd(3)
+            if r>=pos[#pos] then r=r+1 end
+            ins(pos,r)
+        elseif pos[1]>pos[2] and #pos%2==1 or pos[1]<pos[2] and #pos%2==0 then ins(pos,rnd(pos[#pos])
+        else ins(pos,rnd(pos[#pos],4)
+        end
     end,
     Short=function()
         if #pos<2 then ins(pos,rnd(4))ins(pos,rnd(4)) end
